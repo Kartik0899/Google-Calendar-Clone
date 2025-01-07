@@ -46,12 +46,6 @@ const Day = ({ day, rowIdx }) => {
 
   return (
     <div
-      // className={` flex flex-col ${
-      //   darkMode
-      //     ? "border-0 hover:bg-[#1b1b1b] border-r-[1px] border-r-[#333537] border-b-[1px] border-b-[#333537]"
-      //     : "border-gray-200 hover:bg-gray-100 border-r-[1px] border-r-[#e3e3e3] border-b-[1px] border-b-[#e3e3e3]"
-      // }`}
-
       className={`flex flex-col ${
         darkMode
           ? "border-0 hover:bg-[#1b1b1b] border-r-[1px] border-r-[#333537] border-b-[1px] border-b-[#333537]"
@@ -76,33 +70,33 @@ const Day = ({ day, rowIdx }) => {
           {dayInstance.format("DD")}
         </p>
       </header>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 mb-2">
         <div className="flex-1">
-          {/* Show the holiday title if it's a holiday */}
           {holidayLabel && isHoliday && isHoliday.summary && (
             <div className="mt-0 text-xs text-center text-white bg-yellow-600 rounded p-1 mr-2 truncate">
               {isHoliday.summary}
             </div>
           )}
         </div>
-        <div
-          className="flex-1 cursor-pointer"
-          onClick={() => {
-            setDaySelected(day);
-            setShowEventModal(true);
-          }}
-        >
-          {dayEvents.map((evt, idx) => (
-            <div
-              key={idx}
-              onClick={() => setSelectedEvent(evt)}
-              className={`bg-${evt.label}-200 p-1 mr-3 text-gray-600 text-sm rounded mb-1 truncate`}
-            >
-              {evt.title}
-            </div>
-          ))}
-        </div>
       </div>
+      <div
+        className="flex-1 cursor-pointer"
+        onClick={() => {
+          setDaySelected(day);
+          setShowEventModal(true);
+        }}
+      >
+        {dayEvents.map((evt, idx) => (
+          <div
+            key={idx}
+            onClick={() => setSelectedEvent(evt)}
+            className={`bg-${evt.label}-200 p-1 mr-3 text-gray-600 text-sm rounded mb-1 truncate`}
+          >
+            {evt.title}
+          </div>
+        ))}
+      </div>
+      {/* </div> */}
     </div>
   );
 };
